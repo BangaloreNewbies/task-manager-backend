@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  # port: 9592 (remove this line if you have not changed the default port)
+  pool: 5
+  # username: postgres (change the username)
+  # password: postgres (change the password)
+
+development:
+  <<: *default
+  database: task_manager_development
+
+test:
+  <<: *default
+  database: task_manager_test
+
+production:
+  <<: *default
+  database: task_manager_production
+  username: username
+  password: <%= ENV['PROJECT_DATABASE_PASSWORD'] %>
